@@ -1,0 +1,16 @@
+.header{
+
+    width: 100%;
+    height: auto;
+    border-bottom: #c8e5bc solid 2px;
+    background-color: #FFFAE3;
+}
+.navigationHide{
+    display: none;
+}
+.navigationShow{
+    display: block;
+}
+.test{
+
+}

@@ -1,0 +1,9 @@
+# 生产环境 9595
+server:
+  port: 9595
+spring:
+  datasource:
+    username: qxwl
+    password: mysqlroot
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://47.102.208.247:3306/qxwl_dev?useUnicode=true&characterEncoding=utf-8
