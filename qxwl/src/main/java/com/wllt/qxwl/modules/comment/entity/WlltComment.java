@@ -1,8 +1,8 @@
 package com.wllt.qxwl.modules.comment.entity;
 
 import com.wllt.qxwl.comm.base.QXWLBaseEntity;
-import com.wllt.qxwl.utils.DateUtil;
 import lombok.Data;
+import com.wllt.qxwl.comm.utils.DateUtils;
 
 /**
  * <p>
@@ -48,5 +48,5 @@ public class WlltComment extends QXWLBaseEntity {
     /**
      * 评论时间
      */
-    private String commentTime = DateUtil.getDateTime();
+    private String commentTime = DateUtils.getDateTime();
 }

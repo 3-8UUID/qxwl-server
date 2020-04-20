@@ -20,5 +20,17 @@ public interface ResultConstant {
     /** 删除失败 **/
     String RESULT_DELETED_FAIL =  "删除失败";
 
+    /** 登录失败 **/
+    String RESULT_LOGIN_FAIL =  "认证失败";
+    /** 登录成功 **/
+    String RESULT_LOGIN_SUCCESS =  "登录成功";
+
+
+    /** 注册失败 **/
+    String RESULT_REGISTER_FAIL =  "注册失败，存在不合法值！";
+    /** 注册成功 **/
+    String RESULT_REGISTER_SUCCESS =  "注册成功，快去登录吧！";
+
+
 
 }

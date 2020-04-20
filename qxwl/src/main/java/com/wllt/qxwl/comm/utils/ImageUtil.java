@@ -1,4 +1,4 @@
-package com.wllt.qxwl.utils;
+package com.wllt.qxwl.comm.utils;
 
 import sun.misc.BASE64Encoder;
 

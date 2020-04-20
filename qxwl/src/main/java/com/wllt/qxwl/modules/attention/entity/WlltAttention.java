@@ -16,17 +16,17 @@ public class WlltAttention extends QXWLBaseEntity {
 
 
     /**
-     * 收藏ID
+     * 关注文章/帖子ID
      */
     private Long attentionId;
 
     /**
-     * 收藏夹名称
+     * 关注的用户ID
      */
     private Long attentionUserId;
 
     /**
-     * 关注主题类型ID
+     * 关注类型Id
      */
     private Long attentionTypeId;
 

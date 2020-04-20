@@ -1,4 +1,4 @@
-package com.wllt.qxwl.utils;
+package com.wllt.qxwl.comm.utils;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -7,7 +7,7 @@ import lombok.extern.slf4j.Slf4j;
  * @author smxzk32145745@163.com
  */
 @Slf4j
-public class SnowFlakeUtil {
+public class SnowFlakeUtils {
 
     private final long id;
     /**
@@ -45,7 +45,7 @@ public class SnowFlakeUtil {
     private final long sequenceMask = -1L ^ -1L << this.sequenceBits;
     private long lastTimestamp = -1L;
 
-    private SnowFlakeUtil(long id) {
+    private SnowFlakeUtils(long id) {
         if (id > this.maxWorkerId || id < 0) {
             throw new IllegalArgumentException(String.format("worker Id can't be greater than %d or less than 0", this.maxWorkerId));
         }
@@ -74,8 +74,8 @@ public class SnowFlakeUtil {
         return timestamp - this.epoch << this.timestampLeftShift | this.id << this.workerIdShift | this.sequence;
     }
 
-    private static SnowFlakeUtil flowIdWorker = new SnowFlakeUtil(1);
-    public static SnowFlakeUtil getFlowIdInstance() {
+    private static SnowFlakeUtils flowIdWorker = new SnowFlakeUtils(1);
+    public static SnowFlakeUtils getFlowIdInstance() {
         return flowIdWorker;
     }
 

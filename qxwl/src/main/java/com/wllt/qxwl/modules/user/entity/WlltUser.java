@@ -3,8 +3,6 @@ package com.wllt.qxwl.modules.user.entity;
 import com.wllt.qxwl.comm.base.QXWLBaseEntity;
 import lombok.Data;
 
-import java.time.LocalDate;
-
 /**
  * <p>
  *
@@ -34,17 +32,17 @@ public class WlltUser extends QXWLBaseEntity {
     /**
      * 性别
      */
-    private String sex;
+    private Integer sex;
 
     /**
      * 出生日期
      */
-    private LocalDate birthday;
+    private String birthday;
 
     /**
      * 年龄
      */
-    private String age;
+    private Integer age;
 
     /**
      * 邮箱
@@ -77,4 +75,8 @@ public class WlltUser extends QXWLBaseEntity {
     private String idCard;
 
 
+    /**
+     * 盐值
+     */
+    private String salt;
 }

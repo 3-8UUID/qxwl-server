@@ -2,16 +2,41 @@ package com.wllt.qxwl.comm.constant;
 
 /**
  * 常量
- * @author smxzk32145745@163.com
+ * @author Devil
  */
 public interface CommonConstant {
+
+    String PARAM_IN = "入参";
+
+    String PARAM_OUT = "出参";
 
     String DEFAULT_USER = "admin";
 
     /**
      * 用户默认头像
      */
-    String USER_DEFAULT_AVATAR = "https://i.loli.net/2019/04/28/5cc5a71a6e3b6.png";
+    String USER_DEFAULT_AVATAR = "";
+
+    /**
+     * 用户登录注册标志1用户名+密码
+     */
+    Integer USER_FLAG_NAME = 1;
+
+    /**
+     * 用户登录注册标志1手机号+密码
+     */
+    Integer USER_FLAG_MOBILE = 2;
+
+
+    /**
+     * 用户登录注册标志1邮箱+密码
+     */
+    Integer USER_FLAG_EMAIL = 3;
+
+    /**
+     * 用户登录注册标志1邮箱+密码
+     */
+    Integer USER_FLAG_WX = 4;
 
     /**
      * 用户正常状态
@@ -178,9 +203,8 @@ public interface CommonConstant {
      */
     Integer HEADER_TYPE_VICE = 1;
 
-    String SAVE = "save";
-
-    String DELETE = "delete";
 
     String UPLOAD_PATH = "/opt/app/download";
+
+
 }

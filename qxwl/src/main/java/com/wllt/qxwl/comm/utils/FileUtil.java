@@ -1,4 +1,4 @@
-package com.wllt.qxwl.utils;
+package com.wllt.qxwl.comm.utils;
 
 import com.wllt.qxwl.comm.enums.FileTypeEnum;
 import org.springframework.stereotype.Component;

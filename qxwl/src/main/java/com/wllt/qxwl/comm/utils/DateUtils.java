@@ -1,7 +1,7 @@
 /**
  * Copyright &copy; 2012-2016 <a href="https://git.oschina.net/sechot/emergency-handle-center">emergency</a> All rights reserved.
  */
-package com.wllt.qxwl.utils;
+package com.wllt.qxwl.comm.utils;
 
 
 import org.springframework.util.StringUtils;
@@ -13,7 +13,7 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
-public class DateUtil {
+public class DateUtils {
 
 
     private static String[] parsePatterns = {

@@ -1,53 +1,119 @@
 package com.wllt.qxwl.modules.user.controller;
 
 
-import com.alibaba.fastjson.JSON;
+import com.wllt.qxwl.comm.constant.ResultConstant;
+import com.wllt.qxwl.comm.constant.WLLTUrlConstant;
+import com.wllt.qxwl.comm.utils.ResultUtil;
+import com.wllt.qxwl.comm.vo.Result;
+import com.wllt.qxwl.modules.user.bo.WlltUserBo;
 import com.wllt.qxwl.modules.user.entity.WlltUser;
-import com.wllt.qxwl.modules.user.service.IWlltUserService;
+import com.wllt.qxwl.modules.user.service.WlltUserService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.validation.constraints.NotNull;
 import java.util.List;
 
 
 /**
  * <p>
- *  前端控制器
+ * 前端控制器
  * </p>
  *
  * @author Devil
  * @since 2020-04-11
  */
+@Slf4j
 @RestController
 @RequestMapping("/qxwl/user/wlltUser")
 public class WlltUserController {
     @Autowired
-    private IWlltUserService wlltUserService;
+    private WlltUserService wlltUserService;
 
-    @RequestMapping("/save")
-    public String create(){
 
-        WlltUser wlltUser = new WlltUser();
-        boolean save = wlltUserService.save(wlltUser);
-        if (save){
-            return "ok";
+
+    /**
+     * 根据条件查询用户信息
+     *
+     * @param userBo
+     * @return
+     */
+    @PostMapping(WLLTUrlConstant.URL_FIND_LIST)
+    public Result getListByWhere(@RequestBody @NotNull WlltUserBo userBo) {
+        List<WlltUser> list = wlltUserService.findUsersByWhere(userBo);
+        return ResultUtil.success(list);
+    }
+
+    /**
+     * 登录
+     *
+     * @param userBo
+     * @return
+     */
+    @PostMapping(WLLTUrlConstant.URL_LOGIN_UP)
+    public ResponseEntity<Void> login(@RequestBody WlltUserBo userBo, HttpServletRequest request, HttpServletResponse response) {
+
+
+//        Subject subject = SecurityUtils.getSubject();
+//        try {
+//            //将用户请求参数封装后，直接提交给Shiro处理
+//            UsernamePasswordToken token = null;
+//            if (userBo.getFlag() == CommonConstant.USER_FLAG_NAME) {
+//                token = new UsernamePasswordToken(userBo.getUserName(), userBo.getPassword());
+//            } else if (userBo.getFlag() == CommonConstant.USER_FLAG_MOBILE) {
+//                token = new UsernamePasswordToken(userBo.getMobile(), userBo.getPassword());
+//            } else if (userBo.getFlag() == CommonConstant.USER_FLAG_EMAIL) {
+//                token = new UsernamePasswordToken(userBo.getEmail(), userBo.getPassword());
+//            } else if (userBo.getFlag() == CommonConstant.USER_FLAG_WX) {
+//                token = new UsernamePasswordToken(userBo.getWxNumber(), userBo.getPassword());
+//            }
+//            subject.login(token);
+//            //Shiro认证通过后会将user信息放到subject内，生成token并返回
+//            WlltUserBo user = (WlltUserBo) subject.getPrincipal();
+//            String newToken = wlltUserService.generateJwtToken(user);
+//            response.setHeader("x-auth-token", newToken);
+//
+//            return ResponseEntity.ok().build();
+//        } catch (AuthenticationException e) {
+//            // 如果校验失败，shiro会抛出异常，返回客户端失败
+//            log.error("User " + userBo.getUserName() + " login fail, Reason:" + e.getMessage());
+//            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
+//        } catch (Exception e) {
+//            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+//        }
+        return null;
+    }
+
+    /**
+     * 注册
+     *
+     * @param userBo
+     * @return
+     */
+    @PostMapping(WLLTUrlConstant.URL_REGISTER)
+    public Result userRegister(@RequestBody WlltUserBo userBo) {
+        Boolean aBoolean = wlltUserService.userRegister(userBo);
+        if (aBoolean) {
+            return ResultUtil.success(ResultConstant.RESULT_REGISTER_SUCCESS);
         }
-        return "no";
+        return ResultUtil.fail(ResultConstant.RESULT_REGISTER_FAIL);
     }
 
-    @RequestMapping("/list")
-    public String list(){
-
-        WlltUser wlltUser = new WlltUser();
-        List<WlltUser> save = wlltUserService.find(wlltUser);
-
-
-        return JSON.toJSONString(save);
-    }
-
-    @RequestMapping("/del")
-    public String del(){
-        return "已开启rbs";
+    @RequestMapping(WLLTUrlConstant.URL_LOGIN_OUT)
+    public ResponseEntity<Void> logout() {
+//        Subject subject = SecurityUtils.getSubject();
+//        if (subject.getPrincipals() != null) {
+//            WlltUserBo user = (WlltUserBo) subject.getPrincipals().getPrimaryPrincipal();
+//            wlltUserService.deleteLoginInfo(user.getUserName());
+//        }
+//        SecurityUtils.getSubject().logout();
+        return ResponseEntity.ok().build();
     }
 }

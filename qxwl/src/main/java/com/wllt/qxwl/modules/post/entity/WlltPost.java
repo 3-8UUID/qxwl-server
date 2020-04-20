@@ -1,6 +1,6 @@
 package com.wllt.qxwl.modules.post.entity;
 
-import com.wllt.qxwl.utils.DateUtil;
+import com.wllt.qxwl.comm.utils.DateUtils;
 import lombok.Data;
 
 import java.io.Serializable;
@@ -75,7 +75,11 @@ public class WlltPost implements Serializable {
     /**
      * 发帖时间
      */
-    private String postTime = DateUtil.getDateTime();
+    private String postTime = DateUtils.getDateTime();
 
+    /**
+     * 文章点击率
+     */
+    private Integer postClick;
 
 }
