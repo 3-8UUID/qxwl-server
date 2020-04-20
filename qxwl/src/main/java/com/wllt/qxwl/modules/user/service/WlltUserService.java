@@ -17,7 +17,7 @@ import java.util.List;
  */
 public interface WlltUserService extends IService<WlltUser> {
 
-    List<WlltUser> find(WlltUser wlltUser);
+    List<WlltUser> find();
 
     /**
      * 登录

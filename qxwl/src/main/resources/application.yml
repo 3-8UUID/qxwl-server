@@ -35,9 +35,7 @@ spring:
         # 连接池中的最小空闲连接
         min-idle: 0
     ## Redis配置 - end
-shiro:
-  loginUrl: /qxwl/sys/login
-  unauthorizedUrl: /400.html
+
 
 ## 其它配置 - start
 config:

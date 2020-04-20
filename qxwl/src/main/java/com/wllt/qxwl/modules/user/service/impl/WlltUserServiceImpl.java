@@ -3,6 +3,7 @@ package com.wllt.qxwl.modules.user.service.impl;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.wllt.qxwl.comm.constant.CommonConstant;
+import com.wllt.qxwl.comm.redis.RedisClient;
 import com.wllt.qxwl.modules.role.entity.WlltRole;
 import com.wllt.qxwl.modules.role.service.WlltRoleService;
 import com.wllt.qxwl.modules.user.bo.WlltUserBo;
@@ -30,6 +31,10 @@ import java.util.List;
 @Slf4j
 public class WlltUserServiceImpl extends ServiceImpl<WlltUserDao, WlltUser> implements WlltUserService {
 
+
+    @Autowired
+    private RedisClient redisClient;
+
     @Autowired
     private WlltUserDao wlltUserDao;
 
@@ -37,8 +42,16 @@ public class WlltUserServiceImpl extends ServiceImpl<WlltUserDao, WlltUser> impl
     private WlltRoleService wlltRoleService;
 
     @Override
-    public List<WlltUser> find(WlltUser wlltUser) {
-        return wlltUserDao.find();
+    public List<WlltUser> find() {
+        List<WlltUser> userList = (List<WlltUser>) redisClient.get("userList");
+        if (null!=userList&&userList.size()>0){
+            System.out.println("从REDIS中查询");
+            return userList;
+        }
+        List<WlltUser> wlltUsers = wlltUserDao.find();
+        redisClient.set("userList",wlltUsers);
+        System.out.println("从数据库中查询");
+        return wlltUsers;
     }
 
     @Override

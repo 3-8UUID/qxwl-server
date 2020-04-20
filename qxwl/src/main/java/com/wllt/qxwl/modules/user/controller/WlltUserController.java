@@ -1,6 +1,7 @@
 package com.wllt.qxwl.modules.user.controller;
 
 
+import com.wllt.qxwl.comm.base.BaseController;
 import com.wllt.qxwl.comm.constant.ResultConstant;
 import com.wllt.qxwl.comm.constant.WLLTUrlConstant;
 import com.wllt.qxwl.comm.utils.ResultUtil;
@@ -33,10 +34,16 @@ import java.util.List;
 @Slf4j
 @RestController
 @RequestMapping("/qxwl/user/wlltUser")
-public class WlltUserController {
+public class WlltUserController extends BaseController {
     @Autowired
     private WlltUserService wlltUserService;
 
+    @RequestMapping(WLLTUrlConstant.URL_LIST)
+    public Result getList(){
+        System.out.println("this.getClientIP() = " + this.getClientIP());
+        List<WlltUser> list = wlltUserService.find();
+        return ResultUtil.success(list);
+    }
 
 
     /**
@@ -47,6 +54,7 @@ public class WlltUserController {
      */
     @PostMapping(WLLTUrlConstant.URL_FIND_LIST)
     public Result getListByWhere(@RequestBody @NotNull WlltUserBo userBo) {
+        System.out.println("this.getClientIP() = " + this.getClientIP());
         List<WlltUser> list = wlltUserService.findUsersByWhere(userBo);
         return ResultUtil.success(list);
     }
