@@ -26,7 +26,7 @@ public class WlltUserBo implements Serializable {
     /**
      * 密码
      */
-    private char[] password;
+    private String password;
 
     /**
      * 手机号

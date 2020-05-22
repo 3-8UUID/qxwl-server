@@ -10,12 +10,15 @@ public interface CommonConstant {
 
     String PARAM_OUT = "出参";
 
+    /**
+     * 默认用户
+     */
     String DEFAULT_USER = "admin";
 
     /**
      * 用户默认头像
      */
-    String USER_DEFAULT_AVATAR = "";
+    String USER_DEFAULT_AVATAR = "http://47.102.208.247//download/image/man.png";
 
     /**
      * 用户登录注册标志1用户名+密码
@@ -71,22 +74,14 @@ public interface CommonConstant {
     /**
      * 正常状态
      */
-    Integer STATUS_NORMAL = 1;
+    Integer STATUS_NORMAL = 0;
 
     /**
      * 禁用状态
      */
-    Integer STATUS_DISABLE = 0;
+    Integer STATUS_DISABLE = 1;
 
-    /**
-     * 删除标志
-     */
-    Integer DEL_FLAG = 1;
 
-    /**
-     * 限流标识
-     */
-    String LIMIT_ALL = "QMS_LIMIT_ALL";
 
     /**
      * 顶部菜单类型权限
@@ -144,11 +139,6 @@ public interface CommonConstant {
     Integer MESSAGE_STATUS_READ = 1;
 
     /**
-     * github登录
-     */
-    Integer SOCIAL_TYPE_GITHUB = 0;
-
-    /**
      * qq登录
      */
     Integer SOCIAL_TYPE_QQ = 1;
@@ -178,33 +168,17 @@ public interface CommonConstant {
      */
     Integer OSS_QINIU = 1;
 
-    /**
-     * 阿里云OSS存储
-     */
-    Integer OSS_ALI = 2;
+
 
     /**
-     * 腾讯云COS存储
+     * 上传文件地址
      */
-    Integer OSS_TENCENT = 3;
+    String UPLOAD_PATH = "/opt/app/wllt/qxwl/";
 
     /**
-     * MINIO存储
+     * 访问文件的地址
      */
-    Integer OSS_MINIO = 4;
-
-    /**
-     * 部门负责人类型 主负责人
-     */
-    Integer HEADER_TYPE_MAIN = 0;
-
-    /**
-     * 部门负责人类型 副负责人
-     */
-    Integer HEADER_TYPE_VICE = 1;
-
-
-    String UPLOAD_PATH = "/opt/app/download";
+    String DOWNLOAD_PATH = "/download/";
 
 
 }

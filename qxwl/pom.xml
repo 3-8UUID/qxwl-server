@@ -11,18 +11,20 @@
     <groupId>com.wllt</groupId>
     <artifactId>qxwl</artifactId>
     <version>0.0.1-SNAPSHOT</version>
+<!--    <packaging>war</packaging>-->
     <name>qxwl</name>
     <description>Demo project for Spring Boot</description>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-        <shiro.spring.version>1.4.0</shiro.spring.version>
         <jwt.auth0.version>3.2.0</jwt.auth0.version>
         <java.version>1.8</java.version>
+
     </properties>
 
     <dependencies>
+
         <!-- 使用redis做数据缓存，如果不需要可不依赖 -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
