@@ -4,6 +4,7 @@ import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.fasterxml.jackson.databind.ser.std.ToStringSerializer;
 import lombok.Data;
 
+import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.util.List;
 
@@ -26,6 +27,7 @@ public class WlltUserBo implements Serializable {
     /**
      * 密码
      */
+    @NotNull
     private String password;
 
     /**

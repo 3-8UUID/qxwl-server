@@ -1,6 +1,6 @@
 package com.wllt.qxwl.modules.comment.entity;
 
-import com.wllt.qxwl.comm.base.QXWLBaseEntity;
+import com.wllt.qxwl.comm.base.BaseEntity;
 import lombok.Data;
 import com.wllt.qxwl.comm.utils.DateUtils;
 
@@ -13,7 +13,7 @@ import com.wllt.qxwl.comm.utils.DateUtils;
  * @since 2020-04-11
  */
 @Data
-public class WlltComment extends QXWLBaseEntity {
+public class WlltComment extends BaseEntity {
 
     /**
      * 评论ID

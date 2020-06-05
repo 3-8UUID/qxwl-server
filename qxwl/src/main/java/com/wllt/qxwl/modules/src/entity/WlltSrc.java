@@ -1,6 +1,6 @@
 package com.wllt.qxwl.modules.src.entity;
 
-import com.wllt.qxwl.comm.base.QXWLBaseEntity;
+import com.wllt.qxwl.comm.base.BaseEntity;
 import lombok.Data;
 
 /**
@@ -12,7 +12,7 @@ import lombok.Data;
  * @since 2020-04-11
  */
 @Data
-public class WlltSrc extends QXWLBaseEntity {
+public class WlltSrc extends BaseEntity {
 
     /**
      * 资源ID-文章-评论

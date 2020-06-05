@@ -11,19 +11,23 @@
     <groupId>com.wllt</groupId>
     <artifactId>qxwl</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-<!--    <packaging>war</packaging>-->
+    <!--    <packaging>war</packaging>-->
     <name>qxwl</name>
     <description>Demo project for Spring Boot</description>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-        <jwt.auth0.version>3.2.0</jwt.auth0.version>
         <java.version>1.8</java.version>
-
+        <dom4j.version>1.5.2</dom4j.version>
     </properties>
 
     <dependencies>
+        <!-- AOP依赖 -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-aop</artifactId>
+        </dependency>
 
         <!-- 使用redis做数据缓存，如果不需要可不依赖 -->
         <dependency>
@@ -109,7 +113,7 @@
         <dependency>
             <groupId>dom4j</groupId>
             <artifactId>dom4j</artifactId>
-            <version>1.5.2</version>
+            <version>${dom4j.version}</version>
         </dependency>
         <dependency>
             <groupId>org.assertj</groupId>

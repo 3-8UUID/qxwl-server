@@ -3,6 +3,7 @@ package com.wllt.qxwl.comm.base;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -16,6 +17,7 @@ import java.net.UnknownHostException;
 * @date 2020/4/20 21:34
 * @version V1.0
 */
+@Component("baseController")
 public class BaseController {
 
     protected Log logger = LogFactory.getLog(this.getClass());
@@ -97,7 +99,8 @@ public class BaseController {
                 }
             }
             // 对于通过多个代理的情况，第一个IP为客户端真实IP,多个IP按照','分割
-            if (ipAddress != null && ipAddress.length() > 15) { // "***.***.***.***".length()
+            // "***.***.***.***".length()
+            if (ipAddress != null && ipAddress.length() > 15) {
                 // = 15
                 if (ipAddress.indexOf(",") > 0) {
                     ipAddress = ipAddress.substring(0, ipAddress.indexOf(","));

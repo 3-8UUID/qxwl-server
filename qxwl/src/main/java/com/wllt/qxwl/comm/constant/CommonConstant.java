@@ -168,8 +168,6 @@ public interface CommonConstant {
      */
     Integer OSS_QINIU = 1;
 
-
-
     /**
      * 上传文件地址
      */
@@ -180,5 +178,16 @@ public interface CommonConstant {
      */
     String DOWNLOAD_PATH = "/download/";
 
+    /**
+     * 密码加密相关
+     */
+    Integer HASH_ITERATIONS = 1;
+    String SALT = "wllt_qxwl_version_0.1";
 
+    /**
+     * 请求头类型：
+     * application/x-www-form-urlencoded ： form表单格式
+     * application/json ： json格式
+     */
+    String REQUEST_HEADERS_CONTENT_TYPE = "application/json";
 }

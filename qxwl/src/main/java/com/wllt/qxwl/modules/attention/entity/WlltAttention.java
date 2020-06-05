@@ -1,6 +1,6 @@
 package com.wllt.qxwl.modules.attention.entity;
 
-import com.wllt.qxwl.comm.base.QXWLBaseEntity;
+import com.wllt.qxwl.comm.base.BaseEntity;
 import lombok.Data;
 
 /**
@@ -12,7 +12,7 @@ import lombok.Data;
  * @since 2020-04-11
  */
 @Data
-public class WlltAttention extends QXWLBaseEntity {
+public class WlltAttention extends BaseEntity {
 
 
     /**

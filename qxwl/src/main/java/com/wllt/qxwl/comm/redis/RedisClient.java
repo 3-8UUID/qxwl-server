@@ -5,6 +5,7 @@ import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Component;
 import org.springframework.util.CollectionUtils;
 
+import javax.validation.constraints.NotNull;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -146,8 +147,8 @@ public class RedisClient {
     /**
      * 递增
      *
-     * @param key 键
-     * @param  delta 要增加几(大于0)
+     * @param key   键
+     * @param delta 要增加几(大于0)
      * @return
      */
     public long incr(String key, long delta) {
@@ -160,8 +161,8 @@ public class RedisClient {
     /**
      * 递减
      *
-     * @param key 键
-     * @param delta  要减少几(小于0)
+     * @param key   键
+     * @param delta 要减少几(小于0)
      * @return
      */
     public long decr(String key, long delta) {
@@ -180,7 +181,7 @@ public class RedisClient {
      * @param item 项 不能为null
      * @return 值
      */
-    public Object hget(String key, String item) {
+    public Object hget(@NotNull String key,@NotNull  String item) {
         return redisTemplate.opsForHash().get(key, item);
     }
 
@@ -278,7 +279,7 @@ public class RedisClient {
      * @param key  键 不能为null
      * @param item 项 可以使多个 不能为null
      */
-    public void hdel(String key, Object... item) {
+    public void hdel(@NotNull String key,@NotNull  Object... item) {
         redisTemplate.opsForHash().delete(key, item);
     }
 
@@ -289,7 +290,7 @@ public class RedisClient {
      * @param item 项 不能为null
      * @return true 存在 false不存在
      */
-    public boolean hHasKey(String key, String item) {
+    public boolean hHasKey(@NotNull String key,@NotNull  String item) {
         return redisTemplate.opsForHash().hasKey(key, item);
     }
 
@@ -495,8 +496,9 @@ public class RedisClient {
     public boolean lSet(String key, Object value, long time) {
         try {
             redisTemplate.opsForList().rightPush(key, value);
-            if (time > 0)
+            if (time > 0) {
                 expire(key, time);
+            }
             return true;
         } catch (Exception e) {
             e.printStackTrace();
@@ -532,8 +534,9 @@ public class RedisClient {
     public boolean lSet(String key, List<Object> value, long time) {
         try {
             redisTemplate.opsForList().rightPushAll(key, value);
-            if (time > 0)
+            if (time > 0) {
                 expire(key, time);
+            }
             return true;
         } catch (Exception e) {
             e.printStackTrace();

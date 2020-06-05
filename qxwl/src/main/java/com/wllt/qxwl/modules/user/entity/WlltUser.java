@@ -1,6 +1,6 @@
 package com.wllt.qxwl.modules.user.entity;
 
-import com.wllt.qxwl.comm.base.QXWLBaseEntity;
+import com.wllt.qxwl.comm.base.BaseEntity;
 import lombok.Data;
 
 /**
@@ -12,7 +12,7 @@ import lombok.Data;
  * @since 2020-04-11
  */
 @Data
-public class WlltUser extends QXWLBaseEntity {
+public class WlltUser extends BaseEntity {
 
     /**
      * 用户名

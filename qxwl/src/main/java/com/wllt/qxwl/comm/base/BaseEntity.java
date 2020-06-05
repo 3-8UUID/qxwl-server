@@ -16,7 +16,7 @@ import java.io.Serializable;
  * @author smxzk32145745@163.com
  */
 @Data
-public abstract class QXWLBaseEntity implements Serializable{
+public abstract class BaseEntity implements Serializable{
 
     private static final long serialVersionUID = 1L;
 

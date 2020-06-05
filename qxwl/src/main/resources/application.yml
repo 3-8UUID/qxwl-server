@@ -50,9 +50,6 @@ config:
 #开发权限
 ignored:
   urls:
-    - /qxwl/user/wlltUser/loginOut
-    - /qxwl/user/wlltUser/register
-    - /qxwl/user/wlltUser/loginUp
     - /qxwl/sys/**
     - /**/*.html
     - /**/*.js

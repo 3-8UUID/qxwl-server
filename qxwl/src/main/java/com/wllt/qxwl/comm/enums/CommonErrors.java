@@ -45,7 +45,7 @@ public enum CommonErrors {
     /**
      * 未知错误
      */
-    UNDEFINED("9999", "系统错误");
+    UNDEFINED("500", "系统错误");
 
     public static CommonErrors codeOf(String code) {
         for (CommonErrors error : CommonErrors.values()) {
