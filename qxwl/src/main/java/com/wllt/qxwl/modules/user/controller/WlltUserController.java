@@ -4,12 +4,14 @@ package com.wllt.qxwl.modules.user.controller;
 import com.wllt.qxwl.comm.constant.ResultConstant;
 import com.wllt.qxwl.comm.utils.ResultUtil;
 import com.wllt.qxwl.comm.vo.Result;
+import com.wllt.qxwl.modules.role.entity.WlltRole;
 import com.wllt.qxwl.modules.user.bo.WlltUserBo;
 import com.wllt.qxwl.modules.user.entity.WlltUser;
 import com.wllt.qxwl.modules.user.service.WlltUserService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -74,7 +76,7 @@ public class WlltUserController {
      * @return
      */
     @PostMapping("/register")//register
-    public Result userRegister(@RequestBody WlltUserBo userBo) {
+    public Result userRegister(@Validated @RequestBody WlltUserBo userBo) {
         Boolean aBoolean = wlltUserService.userRegister(userBo);
         if (aBoolean) {
             return ResultUtil.success(ResultConstant.RESULT_REGISTER_SUCCESS);
@@ -85,5 +87,11 @@ public class WlltUserController {
     @RequestMapping("/loginOut")
     public ResponseEntity<Void> logout() {
         return ResponseEntity.ok().build();
+    }
+
+    @RequestMapping("/getRoles")
+    public Result getRoleByUserId(@RequestBody WlltUserBo userBo){
+        List<WlltRole> roles = wlltUserService.getUserRoles(userBo.getId());
+        return ResultUtil.success(roles);
     }
 }

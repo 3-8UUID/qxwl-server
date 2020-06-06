@@ -1,5 +1,6 @@
 package com.wllt.qxwl.modules.link.entity;
 
+import com.wllt.qxwl.comm.base.BaseEntity;
 import lombok.Data;
 
 import java.io.Serializable;
@@ -13,7 +14,7 @@ import java.io.Serializable;
  * @since 2020-04-11
  */
 @Data
-public class WlltLink implements Serializable {
+public class WlltLink extends BaseEntity implements Serializable {
 
     /**
      * 链接ID

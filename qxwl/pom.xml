@@ -29,6 +29,22 @@
             <artifactId>spring-boot-starter-aop</artifactId>
         </dependency>
 
+        <!--        jwt-->
+        <dependency>
+            <groupId>io.jsonwebtoken</groupId>
+            <artifactId>jjwt</artifactId>
+            <version>0.9.0</version>
+        </dependency>
+        <!--spring-security-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-security</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-actuator</artifactId>
+        </dependency>
         <!-- 使用redis做数据缓存，如果不需要可不依赖 -->
         <dependency>
             <groupId>org.springframework.boot</groupId>

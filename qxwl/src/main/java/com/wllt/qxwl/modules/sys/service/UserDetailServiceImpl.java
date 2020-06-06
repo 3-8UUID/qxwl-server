@@ -37,7 +37,7 @@ public class UserDetailServiceImpl implements UserDetailsService {
 
         //生成环境是查询数据库获取username的角色用于后续权限判断（如：张三 admin)
         QueryWrapper<WlltUser> queryWrapper = new QueryWrapper<>();
-        queryWrapper.lambda().eq(WlltUser::getUserName,username);
+        queryWrapper.lambda().eq(WlltUser::getUsername,username);
         queryWrapper.lambda().eq(WlltUser::getStatus, CommonConstant.STATUS_NORMAL);
         WlltUser wlltUser = userService.getOne(queryWrapper);
         if (ObjectUtils.isNotEmpty(wlltUser)){
@@ -48,7 +48,7 @@ public class UserDetailServiceImpl implements UserDetailsService {
             System.out.println("before = " + wlltUser.getPassword());
             String encode = new BCryptPasswordEncoder().encode(wlltUser.getPassword());
             System.out.println("after = " + encode);
-            return new User(wlltUser.getUserName(), encode, grantedAuthorities);
+            return new User(wlltUser.getUsername(), encode, grantedAuthorities);
         } else {
             return null;
         }

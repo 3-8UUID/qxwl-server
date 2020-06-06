@@ -6,42 +6,34 @@ package com.wllt.qxwl.comm.enums;
  * @author Saintcy
  */
 public enum CommonErrors {
+
     /**
      * 处理成功
      */
-    SUCCESS("0000", "成功"),
+    SUCCESS("200", "成功"),
     /**
      * 处理失败
      */
-    FAIL("0010", "处理失败"),
-    /**
-     * AppID不合法
-     */
-    INVALID_APPID("0001", "AppID不合法"),
-    /**
-     * 签名验证失败
-     */
-    SIGNATURE_VERIFY_FAIL("0002", "签名验证失败"),
-    /**
-     * 没有权限
-     */
-    UNAUTHORIZED("0003", "没有权限"),
-    /**
-     * 参数错误
-     */
-    INVALID_PARAM("0004", "参数错误"),
-    /**
-     * 非法token或已失效
-     */
-    TOKEN_VERIFY_FAIL("0005", "非法token或已失效"),
-    /**
-     * 服务不存在
-     */
-    SERVICE_NOT_EXIST("0006", "服务不存在"),
-    /**
-     * 服务暂不可用
-     */
-    SERVICE_UNAVAILABLE("0007", "服务暂不可用"),
+    FAIL("400", "处理失败"),
+
+
+
+    ILLEGAL_REQUEST_PARAMETER("10000","非法请求参数"),
+
+    NO_REQUEST_PERMISSION("10001","无权限访问"),
+
+    TOKEN_EXPIRED("10002","token过期"),
+
+    REFRESH_TOKEN_EXPIRED("10003","refresh_token过期"),
+
+    INVALID_SIGNATURE("10004","签名无效/sign无效"),
+
+    INVALID_APP_KEY("10005","app_key无效"),
+
+    INVALID_TIMESTAMP_PARAMETER("10006","timestamp参数无效"),
+
+    ILLEGAL_ACCESS_IP("10007","访问IP不合法"),
+
     /**
      * 未知错误
      */

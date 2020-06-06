@@ -9,12 +9,16 @@ package com.wllt.qxwl.comm.constant;
 public interface ResultConstant {
     /** 保存成功 **/
     String RESULT_SAVE_SUCCESS =  "保存成功";
+    /** 添加成功 **/
+    String RESULT_ADD_SUCCESS =  "添加成功";
     /** 修改成功 **/
     String RESULT_MODIFY_SUCCESS =  "修改成功";
     /** 删除成功 **/
     String RESULT_DELETED_SUCCESS =  "删除成功";
     /** 保存失败 **/
     String RESULT_SAVE_FAIL =  "保存失败";
+    /** 添加失败 **/
+    String RESULT_ADD_FAIL =  "添加失败";
     /** 修改失败 **/
     String RESULT_MODIFY_FAIL =  "修改失败";
     /** 删除失败 **/

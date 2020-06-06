@@ -17,7 +17,7 @@ public class WlltUser extends BaseEntity {
     /**
      * 用户名
      */
-    private String userName;
+    private String username;
 
     /**
      * 密码
@@ -52,7 +52,7 @@ public class WlltUser extends BaseEntity {
     /**
      * 昵称
      */
-    private String nickName;
+    private String nickname;
 
     /**
      * 地址
@@ -79,4 +79,6 @@ public class WlltUser extends BaseEntity {
      * 盐值
      */
     private String salt;
+
+
 }

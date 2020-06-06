@@ -6,7 +6,6 @@ import lombok.Data;
 
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
-import java.util.List;
 
 /**
  * @program: qxwl_server
@@ -22,7 +21,7 @@ public class WlltUserBo implements Serializable {
     /**
      * 用户名
      */
-    private String userName;
+    private String username;
 
     /**
      * 密码
@@ -58,7 +57,7 @@ public class WlltUserBo implements Serializable {
     /**
      * 昵称
      */
-    private String nickName;
+    private String nickname;
 
     /**
      * 地址
@@ -85,15 +84,11 @@ public class WlltUserBo implements Serializable {
      */
     private Integer flag;
 
-    /**
-     * 加密密码
-     */
-    private String encryptPwd;
 
     /**
-     * 加密密码
+     * 角色
      */
-    private List<String> roles;
+    private Integer roleCode;
     /**
      * 盐值
      */

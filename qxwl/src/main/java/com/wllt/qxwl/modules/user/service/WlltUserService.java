@@ -1,6 +1,7 @@
 package com.wllt.qxwl.modules.user.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.wllt.qxwl.modules.role.entity.WlltRole;
 import com.wllt.qxwl.modules.user.bo.WlltUserBo;
 import com.wllt.qxwl.modules.user.entity.WlltUser;
 
@@ -52,7 +53,7 @@ public interface WlltUserService extends IService<WlltUser> {
 
     WlltUser getUserInfo(String username);
 
-    List<String> getUserRoles(Long id);
+    List<WlltRole> getUserRoles(Long id);
 
 
 }
