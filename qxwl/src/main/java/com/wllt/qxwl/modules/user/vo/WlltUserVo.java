@@ -1,22 +1,23 @@
-package com.wllt.qxwl.modules.user.entity;
+package com.wllt.qxwl.modules.user.vo;
 
-import com.baomidou.mybatisplus.annotation.TableField;
-import com.wllt.qxwl.comm.base.BaseEntity;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.fasterxml.jackson.databind.ser.std.ToStringSerializer;
 import lombok.Data;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
- * <p>
- *
- * </p>
- *
- * @author Devil
- * @since 2020-04-11
- */
+ * @program: qxwl_server
+ * @description: 用户Vo实体类
+ * @author: Tian-Quanyou
+ * @create: 2020-06-06 16:48
+ **/
 @Data
-public class WlltUser extends BaseEntity {
+public class WlltUserVo implements Serializable {
 
+    @JsonSerialize(using = ToStringSerializer.class)
+    private Long id;
     /**
      * 用户名
      */
@@ -77,13 +78,18 @@ public class WlltUser extends BaseEntity {
      */
     private String idCard;
 
+    /**
+     * 注册登录标志 1：用户名+密码  2：手机+密码 3 邮箱+密码
+     */
+    private Integer flag;
 
     /**
      * 盐值
      */
     private String salt;
 
-    @TableField(exist = false)
+    /**
+     * 目前单独角色
+     */
     private List<String> roles;
-
 }

@@ -6,6 +6,7 @@ import com.wllt.qxwl.comm.constant.CommonConstant;
 import com.wllt.qxwl.comm.constant.RedisConstant;
 import com.wllt.qxwl.comm.enums.RoleEnum;
 import com.wllt.qxwl.comm.redis.RedisClient;
+import com.wllt.qxwl.comm.utils.PasswordUtils;
 import com.wllt.qxwl.modules.relation.entity.RelationUR;
 import com.wllt.qxwl.modules.relation.service.RelationURService;
 import com.wllt.qxwl.modules.role.entity.WlltRole;
@@ -17,7 +18,6 @@ import com.wllt.qxwl.modules.user.service.WlltUserService;
 import lombok.extern.slf4j.Slf4j;
 import org.assertj.core.util.Lists;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.ObjectUtils;
@@ -52,13 +52,11 @@ public class WlltUserServiceImpl extends ServiceImpl<WlltUserDao, WlltUser> impl
     private WlltRoleService wlltRoleService;
 
 
-    @Autowired
-    private BCryptPasswordEncoder bCryptPasswordEncoder;
 
     @Override
     public List<WlltUser> find() {
-        List<WlltUser> userList = (List<WlltUser>) redisClient.get("userList");
-        if (null != userList && userList.size() > 0) {
+        List<WlltUser> userList = (List<WlltUser>) redisClient.get("list");
+        if (!ObjectUtils.isEmpty(userList)) {
             System.out.println("从REDIS中查询");
             return userList;
         }
@@ -79,8 +77,9 @@ public class WlltUserServiceImpl extends ServiceImpl<WlltUserDao, WlltUser> impl
     public Boolean userRegister(WlltUserBo userBo) {
         WlltUser user = new WlltUser();
         //TODO 密码自定义加密
-        user.setPassword(bCryptPasswordEncoder.encode(userBo.getPassword()));
+        user.setPassword(PasswordUtils.encodePassword(userBo.getPassword(),CommonConstant.SALT));
         user.setUsername(userBo.getUsername());
+        user.setSalt(CommonConstant.SALT);
         boolean save = save(user);
         if (save){
             //注册默认普通用户
@@ -127,6 +126,13 @@ public class WlltUserServiceImpl extends ServiceImpl<WlltUserDao, WlltUser> impl
             }
             redisClient.set(username, user, RedisConstant.EXRP_DAY);
         }
+        //考虑角色会变动不存入redis中了
+        List<WlltRole> roles = getUserRoles(wlltUser.getId());
+        List<String> rs = Lists.newArrayList();
+        roles.forEach(role->{
+            rs.add(role.getRole());
+        });
+        wlltUser.setRoles(rs);
         return wlltUser;
     }
 

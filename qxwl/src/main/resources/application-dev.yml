@@ -7,3 +7,10 @@ spring:
     password: mysqlroot
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://47.102.208.247:3306/qxwl_dev?useUnicode=true&characterEncoding=utf-8
+logging:
+  level:
+    com.example.demo.dao: debug
+mybatis:
+  # spring boot集成mybatis的方式打印sql
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl

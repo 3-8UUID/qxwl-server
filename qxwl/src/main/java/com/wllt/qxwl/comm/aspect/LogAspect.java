@@ -2,6 +2,8 @@ package com.wllt.qxwl.comm.aspect;
 
 import com.alibaba.fastjson.JSONObject;
 import com.wllt.qxwl.comm.base.BaseController;
+import com.wllt.qxwl.comm.utils.ResultUtil;
+import com.wllt.qxwl.comm.vo.Result;
 import lombok.extern.slf4j.Slf4j;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
@@ -47,14 +49,15 @@ public class LogAspect {
             saveRequestLog(point, start);
         } catch (Exception e) {
             // 保存异常日志
-            saveExceptionLog(point, e.getMessage(), start);
+            return saveExceptionLog(point, e.getMessage(), start);
         }
         return result;
     }
 
-    private void saveExceptionLog(ProceedingJoinPoint point, String exeMsg, Long start) {
+    private Result saveExceptionLog(ProceedingJoinPoint point, String exeMsg, Long start) {
         log.info("捕获异常:{}", exeMsg);
         saveRequestLog(point, start);
+        return ResultUtil.fail(exeMsg);
     }
 
 

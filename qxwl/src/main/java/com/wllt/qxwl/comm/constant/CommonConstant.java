@@ -190,4 +190,13 @@ public interface CommonConstant {
      * application/json ： json格式
      */
     String REQUEST_HEADERS_CONTENT_TYPE = "application/json";
+
+    /**
+     * token key
+     */
+    String AUTH_TOKEN = "auth_token";
+    /**
+     * token 有效时间 （一年）
+     */
+    long TOKEN_EXPIRY_DATE = 1000 * 24 * 60 * 60 * 7 * 356;
 }
