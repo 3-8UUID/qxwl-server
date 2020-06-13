@@ -6,6 +6,8 @@ import com.wllt.qxwl.comm.constant.CommonConstant;
 import com.wllt.qxwl.comm.constant.RedisConstant;
 import com.wllt.qxwl.comm.enums.RoleEnum;
 import com.wllt.qxwl.comm.redis.RedisClient;
+import com.wllt.qxwl.comm.utils.JwtTokenUtil;
+import com.wllt.qxwl.comm.utils.LocalRequestContextUtils;
 import com.wllt.qxwl.comm.utils.PasswordUtils;
 import com.wllt.qxwl.modules.relation.entity.RelationUR;
 import com.wllt.qxwl.modules.relation.service.RelationURService;
@@ -148,6 +150,13 @@ public class WlltUserServiceImpl extends ServiceImpl<WlltUserDao, WlltUser> impl
             roles.add(role);
         });
         return roles;
+    }
+
+    @Override
+    public WlltUser getLoginUser() {
+        String token = LocalRequestContextUtils.getRequestBO().getToken();
+        String username = JwtTokenUtil.getUsername(token);
+        return getUserInfo(username);
     }
 
 

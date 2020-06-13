@@ -20,7 +20,7 @@ import java.io.PrintWriter;
  * @create: 2020-06-07 11:34
  **/
 @Component
-public class MyAuthenticationEntryPoint implements AuthenticationEntryPoint {
+public class WlltAuthenticationEntryPoint implements AuthenticationEntryPoint {
     @Override
     public void commence(HttpServletRequest httpServletRequest, HttpServletResponse resp, AuthenticationException e) throws IOException, ServletException {
         resp.setStatus(HttpServletResponse.SC_FORBIDDEN);

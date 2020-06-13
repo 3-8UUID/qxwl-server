@@ -55,5 +55,7 @@ public interface WlltUserService extends IService<WlltUser> {
 
     List<WlltRole> getUserRoles(Long id);
 
+    WlltUser getLoginUser();
+
 
 }

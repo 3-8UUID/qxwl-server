@@ -40,4 +40,8 @@ public interface RedisConstant {
      */
     String PREFIX_SHIRO_REFRESH_TOKEN = "shiro:refresh_token:";
 
+    /**
+     * types的键
+     */
+    String KEY_TYPES = "types";
 }

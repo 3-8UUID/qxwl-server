@@ -23,7 +23,7 @@ import java.io.PrintWriter;
  * @create: 2020-06-07 11:41
  **/
 @Component
-public class MyAuthenticationSuccessHandler implements AuthenticationSuccessHandler {
+public class WlltAuthenticationSuccessHandler implements AuthenticationSuccessHandler {
     @Override
     public void onAuthenticationSuccess(HttpServletRequest req, HttpServletResponse resp, Authentication auth) throws IOException, ServletException {
         WlltUserDetail userDetails = (WlltUserDetail) auth.getPrincipal();

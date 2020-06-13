@@ -45,6 +45,10 @@ public class WlltUserController {
         return ResultUtil.success(list);
     }
 
+    @RequestMapping("/getLoginUser")
+    public WlltUser getLoginUser(){
+        return wlltUserService.getLoginUser();
+    }
 
     /**
      * 根据条件查询用户信息

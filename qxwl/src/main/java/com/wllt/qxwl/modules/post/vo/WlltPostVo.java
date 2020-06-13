@@ -1,22 +1,18 @@
-package com.wllt.qxwl.modules.post.entity;
-
-import com.wllt.qxwl.comm.base.BaseEntity;
-import com.wllt.qxwl.comm.utils.DateUtils;
-import lombok.Data;
+package com.wllt.qxwl.modules.post.vo;
 
 import java.io.Serializable;
+import java.util.List;
 
 /**
- * <p>
- *  文章  、帖子实体类
- * </p>
- *
- * @author Devil
- * @since 2020-04-11
- */
-@Data
-public class WlltPost extends BaseEntity implements Serializable {
+ * @program: qxwl_server
+ * @description: 文章相应实体类  VO
+ * @author: Tian-Quanyou
+ * @create: 2020-06-08 14:36
+ **/
+public class WlltPostVo implements Serializable {
+    private long serializable = 1L;
 
+    private Long id;
     /**
      * 文章封面
      */
@@ -35,7 +31,7 @@ public class WlltPost extends BaseEntity implements Serializable {
     /**
      * 文章内容
      */
-    private String postContext;
+    private List<WlltContentVo> contentList;
 
     /**
      * 文章类型ID
@@ -78,8 +74,7 @@ public class WlltPost extends BaseEntity implements Serializable {
     private Long userId;
 
     /**
-     * 发帖时间
+     * 索引项值
      */
-    private String postTime = DateUtils.getDateTime();
-
+    private String searchValue;
 }

@@ -3,6 +3,8 @@ package com.wllt.qxwl.modules.type.entity;
 import com.wllt.qxwl.comm.base.BaseEntity;
 import lombok.Data;
 
+import java.io.Serializable;
+
 /**
  * <p>
  *
@@ -12,15 +14,12 @@ import lombok.Data;
  * @since 2020-04-11
  */
 @Data
-public class WlltType extends BaseEntity {
+public class WlltType extends BaseEntity implements Serializable {
 
-
-
-    /**
-     * 类型id
-     */
-    private Long typeId;
-
+//    public WlltType(){};
+//    public WlltType(String typeName){
+//        this.typeName = typeName;
+//    }
     /**
      * 类型名称
      */

@@ -20,7 +20,7 @@ import java.io.PrintWriter;
  * @create: 2020-06-07 11:39
  **/
 @Component
-public class MyAuthenticationFailureHandler implements AuthenticationFailureHandler {
+public class WlltAuthenticationFailureHandler implements AuthenticationFailureHandler {
     @Override
     public void onAuthenticationFailure(HttpServletRequest req, HttpServletResponse resp, AuthenticationException e) throws IOException, ServletException {
         resp.setStatus(HttpServletResponse.SC_BAD_REQUEST);

@@ -2,6 +2,7 @@ package com.wllt.qxwl.config.security.handler;
 
 import com.wllt.qxwl.comm.constant.CommonConstant;
 import com.wllt.qxwl.comm.utils.JwtTokenUtil;
+import com.wllt.qxwl.comm.utils.LocalRequestContextUtils;
 import com.wllt.qxwl.config.security.service.WlltUserDetailServiceImpl;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,7 +27,7 @@ import java.io.IOException;
  * @create: 2020-06-07 14:20
  **/
 @Component
-public class MyAuthenticationTokenFilter extends OncePerRequestFilter {
+public class WlltAuthenticationTokenFilter extends OncePerRequestFilter {
 
     @Autowired
     private WlltUserDetailServiceImpl wlltUserDetailService;
@@ -44,7 +45,7 @@ public class MyAuthenticationTokenFilter extends OncePerRequestFilter {
                     UsernamePasswordAuthenticationToken authentication =
                             new UsernamePasswordAuthenticationToken(userDetails, null, userDetails.getAuthorities());
                     authentication.setDetails(new WebAuthenticationDetailsSource().buildDetails(req));
-
+                    LocalRequestContextUtils.setLocalRequestContext(req.getServletContext(),req,resp,null);
                     SecurityContextHolder.getContext().setAuthentication(authentication);
                 }
             }

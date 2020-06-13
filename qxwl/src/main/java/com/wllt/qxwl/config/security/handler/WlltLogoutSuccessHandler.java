@@ -20,12 +20,13 @@ import java.io.PrintWriter;
  * @create: 2020-06-07 11:48
  **/
 @Component
-public class MyLogoutSuccessHandler implements LogoutSuccessHandler {
+public class WlltLogoutSuccessHandler implements LogoutSuccessHandler {
     @Override
     public void onLogoutSuccess(HttpServletRequest req, HttpServletResponse resp, Authentication auth) throws IOException, ServletException {
         resp.setStatus(HttpServletResponse.SC_CONTINUE);
         resp.setCharacterEncoding("UTF-8");
         PrintWriter out = resp.getWriter();
+        //todo 把token清除掉
         Result success = ResultUtil.success("登出成功");
         out.write(JSON.toJSONString(success));
         out.flush();

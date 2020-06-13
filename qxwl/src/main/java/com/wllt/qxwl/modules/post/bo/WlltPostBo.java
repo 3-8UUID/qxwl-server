@@ -1,22 +1,26 @@
-package com.wllt.qxwl.modules.post.entity;
+package com.wllt.qxwl.modules.post.bo;
 
-import com.wllt.qxwl.comm.base.BaseEntity;
-import com.wllt.qxwl.comm.utils.DateUtils;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.wllt.qxwl.modules.post.vo.WlltContentVo;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
+import javax.validation.constraints.NotNull;
 import java.io.Serializable;
+import java.util.List;
 
 /**
- * <p>
- *  文章  、帖子实体类
- * </p>
- *
- * @author Devil
- * @since 2020-04-11
- */
+ * @program: qxwl_server
+ * @description: 请求实体类
+ * @author: Tian-Quanyou
+ * @create: 2020-06-08 14:25
+ **/
 @Data
-public class WlltPost extends BaseEntity implements Serializable {
+@NoArgsConstructor
+public class WlltPostBo extends Page implements Serializable {
+    private long serializable = 1L;
 
+    private Long id;
     /**
      * 文章封面
      */
@@ -35,11 +39,12 @@ public class WlltPost extends BaseEntity implements Serializable {
     /**
      * 文章内容
      */
-    private String postContext;
+    private List<WlltContentVo> contentList;
 
     /**
      * 文章类型ID
      */
+    @NotNull
     private Long typeId;
 
     /**
@@ -78,8 +83,8 @@ public class WlltPost extends BaseEntity implements Serializable {
     private Long userId;
 
     /**
-     * 发帖时间
+     * 索引项值
      */
-    private String postTime = DateUtils.getDateTime();
+    private String searchValue;
 
 }

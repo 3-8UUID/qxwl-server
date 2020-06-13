@@ -21,30 +21,32 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
  * @create: 2020-06-07 11:52
  **/
 @Configuration
-@EnableGlobalMethodSecurity(prePostEnabled =true)
-public class SecurityConfig extends WebSecurityConfigurerAdapter {
+@EnableGlobalMethodSecurity(prePostEnabled = true)
+public class WlltSecurityConfig extends WebSecurityConfigurerAdapter {
 
 
     @Autowired
-    MyAuthenticationEntryPoint myAuthenticationEntryPoint;  //  未登陆时返回 JSON 格式的数据给前端（否则为 html）
+    WlltAuthenticationEntryPoint authenticationEntryPoint;
 
     @Autowired
-    MyAuthenticationSuccessHandler myAuthenticationSuccessHandler;  // 登录成功返回的 JSON 格式数据给前端（否则为 html）
+    WlltAuthenticationSuccessHandler authenticationSuccessHandler;
 
     @Autowired
-    MyAuthenticationFailureHandler myAuthenticationFailureHandler;  //  登录失败返回的 JSON 格式数据给前端（否则为 html）
+    WlltAuthenticationFailureHandler authenticationFailureHandler;
 
     @Autowired
-    MyLogoutSuccessHandler myLogoutSuccessHandler;  // 注销成功返回的 JSON 格式数据给前端（否则为 登录时的 html）
+    WlltLogoutSuccessHandler logoutSuccessHandler;
 
 //    @Autowired
-//    AjaxAccessDeniedHandler accessDeniedHandler;    // 无权访问返回的 JSON 格式数据给前端（否则为 403 html 页面）
+//    AjaxAccessDeniedHandler accessDeniedHandler;
 
+    // 自定义user
     @Autowired
-    WlltUserDetailServiceImpl userDetailsService; // 自定义user
-//
+    WlltUserDetailServiceImpl userDetailsService;
+
+    // JWT 拦截器
     @Autowired
-    MyAuthenticationTokenFilter myAuthenticationTokenFilter; // JWT 拦截器
+    WlltAuthenticationTokenFilter authenticationTokenFilter;
 
 
     @Override
@@ -55,16 +57,16 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.csrf().disable().authorizeRequests()
-                .antMatchers("/qxwl/sys/**","/qxwl/user/register").permitAll()
+                .antMatchers("/qxwl/anon/**").permitAll()
                 .anyRequest().authenticated()
                 .and()
-                .httpBasic().authenticationEntryPoint(myAuthenticationEntryPoint)
+                .httpBasic().authenticationEntryPoint(authenticationEntryPoint)
                 .and().formLogin()
-                .successHandler(myAuthenticationSuccessHandler)
-                .failureHandler(myAuthenticationFailureHandler).permitAll()
+                .successHandler(authenticationSuccessHandler)
+                .failureHandler(authenticationFailureHandler).permitAll()
                 .and()
                 .logout()
-                .logoutSuccessHandler(myLogoutSuccessHandler)
+                .logoutSuccessHandler(logoutSuccessHandler)
                 .permitAll()// 不需要session
                 .and()
                 .sessionManagement()
@@ -74,7 +76,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
         // 无权访问 JSON 格式的数据
 //        http.exceptionHandling().accessDeniedHandler(accessDeniedHandler);
-        http.addFilterBefore(myAuthenticationTokenFilter, UsernamePasswordAuthenticationFilter.class);
+        http.addFilterBefore(authenticationTokenFilter, UsernamePasswordAuthenticationFilter.class);
     }
 
     @Override
@@ -84,6 +86,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Bean
     public BCryptPasswordEncoder passwordEncoder() {
-        return new MyPasswordEncoder();
+        return new WlltPasswordEncoder();
     }
 }
