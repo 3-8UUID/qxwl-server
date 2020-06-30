@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wllt.qxwl.modules.article.type.dao.WlltTypeDao">
+
+    <resultMap type="com.wllt.qxwl.modules.article.type.entity.WlltType" id="WlltTypeMap">
+        <result property="id" column="id" jdbcType="INTEGER"/>
+        <result property="typeName" column="type_name" jdbcType="VARCHAR"/>
+        <result property="typeAttentionId" column="type_attention_id" jdbcType="INTEGER"/>
+        <result property="typeCommentId" column="type_comment_id" jdbcType="INTEGER"/>
+        <result property="typeCollectId" column="type_collect_id" jdbcType="INTEGER"/>
+        <result property="userId" column="user_id" jdbcType="INTEGER"/>
+        <result property="status" column="status" jdbcType="INTEGER"/>
+        <result property="description" column="description" jdbcType="VARCHAR"/>
+        <result property="sortOrder" column="sort_order" jdbcType="INTEGER"/>
+        <result property="createTime" column="create_time" jdbcType="TIMESTAMP"/>
+        <result property="createBy" column="create_by" jdbcType="VARCHAR"/>
+        <result property="updateTime" column="update_time" jdbcType="TIMESTAMP"/>
+        <result property="updateBy" column="update_by" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <!--查询单个-->
+    <select id="queryById" resultMap="WlltTypeMap">
+        select
+          id, type_name, type_attention_id, type_comment_id, type_collect_id, user_id, status, description, sort_order, create_time, create_by, update_time, update_by
+        from qxwl_dev.wllt_type
+        where id = #{id}
+    </select>
+
+    <!--查询指定行数据-->
+    <select id="queryAllByLimit" resultMap="WlltTypeMap">
+        select
+          id, type_name, type_attention_id, type_comment_id, type_collect_id, user_id, status, description, sort_order, create_time, create_by, update_time, update_by
+        from qxwl_dev.wllt_type
+        limit #{offset}, #{limit}
+    </select>
+
+    <!--通过实体作为筛选条件查询-->
+    <select id="queryAll" resultMap="WlltTypeMap">
+        select
+          id, type_name, type_attention_id, type_comment_id, type_collect_id, user_id, status, description, sort_order, create_time, create_by, update_time, update_by
+        from qxwl_dev.wllt_type
+        <where>
+            <if test="id != null">
+                and id = #{id}
+            </if>
+            <if test="typeName != null and typeName != ''">
+                and type_name = #{typeName}
+            </if>
+            <if test="typeAttentionId != null">
+                and type_attention_id = #{typeAttentionId}
+            </if>
+            <if test="typeCommentId != null">
+                and type_comment_id = #{typeCommentId}
+            </if>
+            <if test="typeCollectId != null">
+                and type_collect_id = #{typeCollectId}
+            </if>
+            <if test="userId != null">
+                and user_id = #{userId}
+            </if>
+            <if test="status != null">
+                and status = #{status}
+            </if>
+            <if test="description != null and description != ''">
+                and description = #{description}
+            </if>
+            <if test="sortOrder != null">
+                and sort_order = #{sortOrder}
+            </if>
+            <if test="createTime != null">
+                and create_time = #{createTime}
+            </if>
+            <if test="createBy != null and createBy != ''">
+                and create_by = #{createBy}
+            </if>
+            <if test="updateTime != null">
+                and update_time = #{updateTime}
+            </if>
+            <if test="updateBy != null and updateBy != ''">
+                and update_by = #{updateBy}
+            </if>
+        </where>
+    </select>
+
+    <!--通过主键修改数据-->
+    <update id="update">
+        update qxwl_dev.wllt_type
+        <set>
+            <if test="typeName != null and typeName != ''">
+                type_name = #{typeName},
+            </if>
+            <if test="typeAttentionId != null">
+                type_attention_id = #{typeAttentionId},
+            </if>
+            <if test="typeCommentId != null">
+                type_comment_id = #{typeCommentId},
+            </if>
+            <if test="typeCollectId != null">
+                type_collect_id = #{typeCollectId},
+            </if>
+            <if test="userId != null">
+                user_id = #{userId},
+            </if>
+            <if test="status != null">
+                status = #{status},
+            </if>
+            <if test="description != null and description != ''">
+                description = #{description},
+            </if>
+            <if test="sortOrder != null">
+                sort_order = #{sortOrder},
+            </if>
+            <if test="createTime != null">
+                create_time = #{createTime},
+            </if>
+            <if test="createBy != null and createBy != ''">
+                create_by = #{createBy},
+            </if>
+            <if test="updateTime != null">
+                update_time = #{updateTime},
+            </if>
+            <if test="updateBy != null and updateBy != ''">
+                update_by = #{updateBy},
+            </if>
+        </set>
+        where id = #{id}
+    </update>
+
+    <!--通过主键删除-->
+    <delete id="deleteById">
+        delete from qxwl_dev.wllt_type where id = #{id}
+    </delete>
+
+</mapper>

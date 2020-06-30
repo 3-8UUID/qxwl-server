@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wllt.qxwl.modules.account.relation.dao.RelationURDao">
+
+    <resultMap type="com.wllt.qxwl.modules.account.relation.entity.RelationUR" id="RelationURMap">
+        <result property="id" column="id" jdbcType="BIGINT"/>
+        <result property="userId" column="user_id" jdbcType="BIGINT"/>
+        <result property="roleId" column="role_id" jdbcType="BIGINT"/>
+    </resultMap>
+
+    <!--查询单个-->
+    <select id="queryById" resultMap="RelationURMap">
+        select
+          id, user_id, role_id
+        from qxwl_dev.relation_u_r
+        where id = #{id}
+    </select>
+
+
+</mapper>
