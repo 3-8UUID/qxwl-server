@@ -3,7 +3,7 @@ server:
   port: 9999
 spring:
   datasource:
-    username: qxwl_test
-    password: mysqlroot
+    username: ENC(XRx2m/3zjAEDdUlkQOwgsadkLuH4YJTJ)
+    password: ENC(hzXTmV3Pg3Yr92RySUF8RV2/W93HVjF8)
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://47.102.208.247:3306/qxwl_test?useUnicode=true&characterEncoding=utf-8
+    url: ENC(Rt41dEMTB88hD0xq+lsu1hSI175RGKdf5oz/3u5I+0mj5MR2V5OIY0dYHz5MURrbrNFIWE4Al/MbBBJSEmt+qs1bMNIsVu0DmadIkYUrvoXza3fJq1HPguL+qRlHzdFL)

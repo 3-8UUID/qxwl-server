@@ -171,7 +171,9 @@ public interface CommonConstant {
     /**
      * 上传文件地址
      */
-    String UPLOAD_PATH = "/opt/app/wllt/qxwl/";
+    String UPLOAD_PATH = "D:/opt/app/wllt/qxwl/";
+
+    String IMG_PREFIX = "image/";
 
     /**
      * 访问文件的地址

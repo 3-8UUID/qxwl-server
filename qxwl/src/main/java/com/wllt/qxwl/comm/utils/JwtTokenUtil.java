@@ -2,7 +2,7 @@ package com.wllt.qxwl.comm.utils;
 
 
 import com.wllt.qxwl.comm.constant.CommonConstant;
-import com.wllt.qxwl.modules.user.entity.WlltUser;
+import com.wllt.qxwl.modules.account.user.entity.WlltUser;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;

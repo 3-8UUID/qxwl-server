@@ -1,8 +1,8 @@
 package com.wllt.qxwl.config.security.service;
 
 import com.wllt.qxwl.config.security.dto.WlltUserDetail;
-import com.wllt.qxwl.modules.user.entity.WlltUser;
-import com.wllt.qxwl.modules.user.service.WlltUserService;
+import com.wllt.qxwl.modules.account.user.entity.WlltUser;
+import com.wllt.qxwl.modules.account.user.service.WlltUserService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;

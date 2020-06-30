@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wllt.qxwl.modules.account.user.dao.WlltUserDao">
+
+    <select id="find" resultType="com.wllt.qxwl.modules.account.user.entity.WlltUser">
+        select * from wllt_user
+
+    </select>
+</mapper>

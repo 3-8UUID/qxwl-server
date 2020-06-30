@@ -1,13 +1,13 @@
+jasypt:
+  encryptor:
+    password: wllt_wwyx_tk
+
 server:
   port: 8080
 spring:
   profiles:
     active: dev
-  datasource:
-    username: qxwl
-    password: mysqlroot
-    driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://47.102.208.247:3306/qxwl?useUnicode=true&characterEncoding=utf-8
+
   mvc:
     view:
       prefix: /
@@ -17,11 +17,11 @@ spring:
     # Redis数据库索引（默认为0）
     database: 1
     # Redis服务器地址
-    host: 47.102.208.247
+    host: ENC(93jy3baWITE+Rai1zIS7T7w8Ek0WCXg7)
     # Redis服务器连接端口
     port: 6379
     # Redis服务器连接密码（默认为空）
-    password: "wllt_qxwl@123"
+    password: ENC(K2CEUIM7Ry6d0BCn2NRArZQmvUpvW8ip)
     # 连接超时时间（毫秒）
     timeout: 5000
     jedis:

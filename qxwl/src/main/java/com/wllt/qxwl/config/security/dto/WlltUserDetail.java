@@ -1,6 +1,6 @@
 package com.wllt.qxwl.config.security.dto;
 
-import com.wllt.qxwl.modules.user.entity.WlltUser;
+import com.wllt.qxwl.modules.account.user.entity.WlltUser;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;

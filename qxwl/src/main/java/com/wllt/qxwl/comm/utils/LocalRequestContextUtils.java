@@ -1,8 +1,8 @@
 package com.wllt.qxwl.comm.utils;
 
 
-import com.wllt.qxwl.modules.user.bo.RequestBo;
-import com.wllt.qxwl.modules.user.entity.WlltUser;
+import com.wllt.qxwl.modules.account.user.bo.RequestBo;
+import com.wllt.qxwl.modules.account.user.entity.WlltUser;
 import org.springframework.util.ObjectUtils;
 
 import javax.servlet.ServletContext;
