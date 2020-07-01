@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wllt.qxwl.modules.custom.share.dao.WlltShareDao">
+
+    <resultMap type="com.wllt.qxwl.modules.custom.share.entity.WlltShare" id="WlltShareMap">
+        <result property="id" column="id" jdbcType="INTEGER"/>
+        <result property="shareTime" column="share_time" jdbcType="TIMESTAMP"/>
+        <result property="postId" column="post_id" jdbcType="INTEGER"/>
+        <result property="shareUserId" column="share_user_id" jdbcType="INTEGER"/>
+        <result property="typeId" column="type_id" jdbcType="INTEGER"/>
+        <result property="commentId" column="comment_id" jdbcType="INTEGER"/>
+        <result property="userId" column="user_id" jdbcType="INTEGER"/>
+        <result property="status" column="status" jdbcType="INTEGER"/>
+        <result property="description" column="description" jdbcType="VARCHAR"/>
+        <result property="sortOrder" column="sort_order" jdbcType="INTEGER"/>
+        <result property="createTime" column="create_time" jdbcType="TIMESTAMP"/>
+        <result property="createBy" column="create_by" jdbcType="VARCHAR"/>
+        <result property="updateTime" column="update_time" jdbcType="TIMESTAMP"/>
+        <result property="updateBy" column="update_by" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <!--查询单个-->
+    <select id="queryById" resultMap="WlltShareMap">
+        select
+          id, share_time, post_id, share_user_id, type_id, comment_id, user_id, status, description, sort_order, create_time, create_by, update_time, update_by
+        from qxwl_dev.wllt_share
+        where id = #{id}
+    </select>
+
+    <!--查询指定行数据-->
+    <select id="queryAllByLimit" resultMap="WlltShareMap">
+        select
+          id, share_time, post_id, share_user_id, type_id, comment_id, user_id, status, description, sort_order, create_time, create_by, update_time, update_by
+        from qxwl_dev.wllt_share
+        limit #{offset}, #{limit}
+    </select>
+
+    <!--通过实体作为筛选条件查询-->
+    <select id="queryAll" resultMap="WlltShareMap">
+        select
+          id, share_time, post_id, share_user_id, type_id, comment_id, user_id, status, description, sort_order, create_time, create_by, update_time, update_by
+        from qxwl_dev.wllt_share
+        <where>
+            <if test="id != null">
+                and id = #{id}
+            </if>
+            <if test="shareTime != null">
+                and share_time = #{shareTime}
+            </if>
+            <if test="postId != null">
+                and post_id = #{postId}
+            </if>
+            <if test="shareUserId != null">
+                and share_user_id = #{shareUserId}
+            </if>
+            <if test="typeId != null">
+                and type_id = #{typeId}
+            </if>
+            <if test="commentId != null">
+                and comment_id = #{commentId}
+            </if>
+            <if test="userId != null">
+                and user_id = #{userId}
+            </if>
+            <if test="status != null">
+                and status = #{status}
+            </if>
+            <if test="description != null and description != ''">
+                and description = #{description}
+            </if>
+            <if test="sortOrder != null">
+                and sort_order = #{sortOrder}
+            </if>
+            <if test="createTime != null">
+                and create_time = #{createTime}
+            </if>
+            <if test="createBy != null and createBy != ''">
+                and create_by = #{createBy}
+            </if>
+            <if test="updateTime != null">
+                and update_time = #{updateTime}
+            </if>
+            <if test="updateBy != null and updateBy != ''">
+                and update_by = #{updateBy}
+            </if>
+        </where>
+    </select>
+
+    <!--新增所有列-->
+    <insert id="insert1" keyProperty="id" useGeneratedKeys="true">
+        insert into qxwl_dev.wllt_share(share_time, post_id, share_user_id, type_id, comment_id, user_id, status, description, sort_order, create_time, create_by, update_time, update_by)
+        values (#{shareTime}, #{postId}, #{shareUserId}, #{typeId}, #{commentId}, #{userId}, #{status}, #{description}, #{sortOrder}, #{createTime}, #{createBy}, #{updateTime}, #{updateBy})
+    </insert>
+
+    <!--通过主键修改数据-->
+    <update id="update">
+        update qxwl_dev.wllt_share
+        <set>
+            <if test="shareTime != null">
+                share_time = #{shareTime},
+            </if>
+            <if test="postId != null">
+                post_id = #{postId},
+            </if>
+            <if test="shareUserId != null">
+                share_user_id = #{shareUserId},
+            </if>
+            <if test="typeId != null">
+                type_id = #{typeId},
+            </if>
+            <if test="commentId != null">
+                comment_id = #{commentId},
+            </if>
+            <if test="userId != null">
+                user_id = #{userId},
+            </if>
+            <if test="status != null">
+                status = #{status},
+            </if>
+            <if test="description != null and description != ''">
+                description = #{description},
+            </if>
+            <if test="sortOrder != null">
+                sort_order = #{sortOrder},
+            </if>
+            <if test="createTime != null">
+                create_time = #{createTime},
+            </if>
+            <if test="createBy != null and createBy != ''">
+                create_by = #{createBy},
+            </if>
+            <if test="updateTime != null">
+                update_time = #{updateTime},
+            </if>
+            <if test="updateBy != null and updateBy != ''">
+                update_by = #{updateBy},
+            </if>
+        </set>
+        where id = #{id}
+    </update>
+
+    <!--通过主键删除-->
+    <delete id="deleteById">
+        delete from qxwl_dev.wllt_share where id = #{id}
+    </delete>
+
+</mapper>

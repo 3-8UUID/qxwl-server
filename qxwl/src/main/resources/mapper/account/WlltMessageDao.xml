@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wllt.qxwl.modules.account.message.dao.WlltMessageDao">
+
+    <resultMap type="com.wllt.qxwl.modules.account.message.entity.WlltMessage" id="WlltMessageMap">
+        <result property="id" column="id" jdbcType="INTEGER"/>
+        <result property="userId" column="user_id" jdbcType="INTEGER"/>
+        <result property="operateTime" column="operate_time" jdbcType="TIMESTAMP"/>
+        <result property="postId" column="post_id" jdbcType="INTEGER"/>
+        <result property="greatId" column="great_id" jdbcType="INTEGER"/>
+        <result property="commentId" column="comment_id" jdbcType="INTEGER"/>
+        <result property="shareId" column="share_id" jdbcType="INTEGER"/>
+        <result property="clickId" column="click_id" jdbcType="INTEGER"/>
+        <result property="collectId" column="collect_id" jdbcType="INTEGER"/>
+        <result property="attentionId" column="attention_id" jdbcType="INTEGER"/>
+        <result property="roleId" column="role_id" jdbcType="INTEGER"/>
+        <result property="isRead" column="is_read" jdbcType="INTEGER"/>
+        <result property="status" column="status" jdbcType="INTEGER"/>
+        <result property="description" column="description" jdbcType="VARCHAR"/>
+        <result property="sortOrder" column="sort_order" jdbcType="INTEGER"/>
+        <result property="createTime" column="create_time" jdbcType="TIMESTAMP"/>
+        <result property="createBy" column="create_by" jdbcType="VARCHAR"/>
+        <result property="updateTime" column="update_time" jdbcType="TIMESTAMP"/>
+        <result property="updateBy" column="update_by" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <!--查询单个-->
+    <select id="queryById" resultMap="WlltMessageMap">
+        select
+          id, user_id, operate_time, post_id, great_id, comment_id, share_id, click_id, collect_id, attention_id, role_id, is_read, status, description, sort_order, create_time, create_by, update_time, update_by
+        from qxwl_dev.wllt_message
+        where id = #{id}
+    </select>
+
+    <!--查询指定行数据-->
+    <select id="queryAllByLimit" resultMap="WlltMessageMap">
+        select
+          id, user_id, operate_time, post_id, great_id, comment_id, share_id, click_id, collect_id, attention_id, role_id, is_read, status, description, sort_order, create_time, create_by, update_time, update_by
+        from qxwl_dev.wllt_message
+        limit #{offset}, #{limit}
+    </select>
+
+    <!--通过实体作为筛选条件查询-->
+    <select id="queryAll" resultMap="WlltMessageMap">
+        select
+          id, user_id, operate_time, post_id, great_id, comment_id, share_id, click_id, collect_id, attention_id, role_id, is_read, status, description, sort_order, create_time, create_by, update_time, update_by
+        from qxwl_dev.wllt_message
+        <where>
+            <if test="id != null">
+                and id = #{id}
+            </if>
+            <if test="userId != null">
+                and user_id = #{userId}
+            </if>
+            <if test="operateTime != null">
+                and operate_time = #{operateTime}
+            </if>
+            <if test="postId != null">
+                and post_id = #{postId}
+            </if>
+            <if test="greatId != null">
+                and great_id = #{greatId}
+            </if>
+            <if test="commentId != null">
+                and comment_id = #{commentId}
+            </if>
+            <if test="shareId != null">
+                and share_id = #{shareId}
+            </if>
+            <if test="clickId != null">
+                and click_id = #{clickId}
+            </if>
+            <if test="collectId != null">
+                and collect_id = #{collectId}
+            </if>
+            <if test="attentionId != null">
+                and attention_id = #{attentionId}
+            </if>
+            <if test="roleId != null">
+                and role_id = #{roleId}
+            </if>
+            <if test="isRead != null">
+                and is_read = #{isRead}
+            </if>
+            <if test="status != null">
+                and status = #{status}
+            </if>
+            <if test="description != null and description != ''">
+                and description = #{description}
+            </if>
+            <if test="sortOrder != null">
+                and sort_order = #{sortOrder}
+            </if>
+            <if test="createTime != null">
+                and create_time = #{createTime}
+            </if>
+            <if test="createBy != null and createBy != ''">
+                and create_by = #{createBy}
+            </if>
+            <if test="updateTime != null">
+                and update_time = #{updateTime}
+            </if>
+            <if test="updateBy != null and updateBy != ''">
+                and update_by = #{updateBy}
+            </if>
+        </where>
+    </select>
+
+    <!--新增所有列-->
+    <insert id="insert1" keyProperty="id" useGeneratedKeys="true">
+        insert into qxwl_dev.wllt_message(user_id, operate_time, post_id, great_id, comment_id, share_id, click_id, collect_id, attention_id, role_id, is_read, status, description, sort_order, create_time, create_by, update_time, update_by)
+        values (#{userId}, #{operateTime}, #{postId}, #{greatId}, #{commentId}, #{shareId}, #{clickId}, #{collectId}, #{attentionId}, #{roleId}, #{isRead}, #{status}, #{description}, #{sortOrder}, #{createTime}, #{createBy}, #{updateTime}, #{updateBy})
+    </insert>
+
+    <!--通过主键修改数据-->
+    <update id="update">
+        update qxwl_dev.wllt_message
+        <set>
+            <if test="userId != null">
+                user_id = #{userId},
+            </if>
+            <if test="operateTime != null">
+                operate_time = #{operateTime},
+            </if>
+            <if test="postId != null">
+                post_id = #{postId},
+            </if>
+            <if test="greatId != null">
+                great_id = #{greatId},
+            </if>
+            <if test="commentId != null">
+                comment_id = #{commentId},
+            </if>
+            <if test="shareId != null">
+                share_id = #{shareId},
+            </if>
+            <if test="clickId != null">
+                click_id = #{clickId},
+            </if>
+            <if test="collectId != null">
+                collect_id = #{collectId},
+            </if>
+            <if test="attentionId != null">
+                attention_id = #{attentionId},
+            </if>
+            <if test="roleId != null">
+                role_id = #{roleId},
+            </if>
+            <if test="isRead != null">
+                is_read = #{isRead},
+            </if>
+            <if test="status != null">
+                status = #{status},
+            </if>
+            <if test="description != null and description != ''">
+                description = #{description},
+            </if>
+            <if test="sortOrder != null">
+                sort_order = #{sortOrder},
+            </if>
+            <if test="createTime != null">
+                create_time = #{createTime},
+            </if>
+            <if test="createBy != null and createBy != ''">
+                create_by = #{createBy},
+            </if>
+            <if test="updateTime != null">
+                update_time = #{updateTime},
+            </if>
+            <if test="updateBy != null and updateBy != ''">
+                update_by = #{updateBy},
+            </if>
+        </set>
+        where id = #{id}
+    </update>
+
+    <!--通过主键删除-->
+    <delete id="deleteById">
+        delete from qxwl_dev.wllt_message where id = #{id}
+    </delete>
+
+</mapper>

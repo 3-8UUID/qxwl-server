@@ -32,7 +32,7 @@ public class LogAspect {
     private BaseController baseController;
 
     //    @Pointcut("@annotation(com.wllt.qxwl.comm.annotation.ControllerLog)")
-    @Pointcut("execution(* com.wllt.qxwl.modules.*.controller..*.*(..))")
+    @Pointcut("execution(* com.wllt.qxwl.modules.*.*.controller..*.*(..))")
     public void logPointCut() {
 
     }
