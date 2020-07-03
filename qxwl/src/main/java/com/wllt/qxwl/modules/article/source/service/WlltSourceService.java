@@ -55,5 +55,5 @@ public interface WlltSourceService extends IService<WlltSource> {
      */
     boolean deleteById(Long id);
 
-    WlltSource createFile(MultipartFile file);
+    WlltSource createFile(MultipartFile file, Long srcId);
 }

@@ -34,8 +34,8 @@ public class WlltSourceController {
      * @return
      */
     @RequestMapping("/fileUp")
-    public Result createResource(@RequestBody @NotNull MultipartFile file){
-        WlltSource wlltSource = wlltSourceService.createFile(file);
+    public Result createResource(@RequestBody @NotNull MultipartFile file,Long srcId){
+        WlltSource wlltSource = wlltSourceService.createFile(file,srcId);
         if (ObjectUtils.isEmpty(wlltSource)){
             return ResultUtil.fail();
         }

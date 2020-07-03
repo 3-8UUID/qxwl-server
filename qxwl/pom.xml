@@ -20,14 +20,26 @@
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <java.version>1.8</java.version>
         <dom4j.version>1.5.2</dom4j.version>
+        <hutool.version>4.5.16</hutool.version>
+        <jasypt.version>2.1.0</jasypt.version>
+        <jjwt.version>0.9.0</jjwt.version>
+        <httpclient.version>4.5.5</httpclient.version>
     </properties>
 
     <dependencies>
+
+        <!-- Hutool工具包 -->
+        <dependency>
+            <groupId>cn.hutool</groupId>
+            <artifactId>hutool-all</artifactId>
+            <version>${hutool.version}</version>
+        </dependency>
+
         <!-- 加密敏感信息-->
         <dependency>
             <groupId>com.github.ulisesbocchio</groupId>
             <artifactId>jasypt-spring-boot-starter</artifactId>
-            <version>2.1.0</version>
+            <version>${jasypt.version}</version>
         </dependency>
         <!-- FtpClient依赖包 -->
         <!-- <dependency>
@@ -46,7 +58,7 @@
         <dependency>
             <groupId>io.jsonwebtoken</groupId>
             <artifactId>jjwt</artifactId>
-            <version>0.9.0</version>
+            <version>${jjwt.version}</version>
         </dependency>
         <!--spring-security-->
         <dependency>
@@ -67,7 +79,7 @@
         <dependency>
             <groupId>org.apache.httpcomponents</groupId>
             <artifactId>httpclient</artifactId>
-            <version>4.5.5</version>
+            <version>${httpclient.version}</version>
         </dependency>
 
         <dependency>

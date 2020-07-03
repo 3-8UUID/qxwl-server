@@ -171,7 +171,7 @@ public interface CommonConstant {
     /**
      * 上传文件地址
      */
-    String UPLOAD_PATH = "D:/opt/app/wllt/qxwl/";
+    String UPLOAD_PATH = "D://opt/app/wllt/qxwl/";
 
     String IMG_PREFIX = "image/";
 
@@ -201,4 +201,8 @@ public interface CommonConstant {
      * token 有效时间 （一年）
      */
     long TOKEN_EXPIRY_DATE = 1000 * 24 * 60 * 60 * 7 * 356;
+    /**
+     * 图片文件类代码
+     */
+    Integer TYPE_IMG = 101;
 }

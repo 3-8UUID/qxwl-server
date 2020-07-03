@@ -3,13 +3,14 @@ package com.wllt.qxwl.modules.article.source.service.impl;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.wllt.qxwl.comm.constant.CommonConstant;
 import com.wllt.qxwl.comm.utils.SnowFlakeUtils;
+import com.wllt.qxwl.modules.account.user.entity.WlltUser;
+import com.wllt.qxwl.modules.account.user.service.WlltUserService;
 import com.wllt.qxwl.modules.article.source.dao.WlltSourceDao;
 import com.wllt.qxwl.modules.article.source.entity.WlltSource;
 import com.wllt.qxwl.modules.article.source.service.WlltSourceService;
-import com.wllt.qxwl.modules.account.user.entity.WlltUser;
-import com.wllt.qxwl.modules.account.user.service.WlltUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.util.ObjectUtils;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.annotation.Resource;
@@ -90,21 +91,28 @@ public class WlltSourceServiceImpl extends ServiceImpl<WlltSourceDao, WlltSource
     }
 
     @Override
-    public WlltSource createFile(MultipartFile file) {
+    public WlltSource createFile(MultipartFile file, Long srcId) {
+
         WlltUser loginUser = wlltUserService.getLoginUser();
-        long srcId = SnowFlakeUtils.getFlowIdInstance().nextId();
+        srcId = ObjectUtils.isEmpty(srcId)?SnowFlakeUtils.getFlowIdInstance().nextId():srcId;
         WlltSource source = new WlltSource();
         String type = file.getOriginalFilename().substring(file.getOriginalFilename().lastIndexOf(".") + 1).toUpperCase();
-        String filePath = CommonConstant.UPLOAD_PATH + CommonConstant.IMG_PREFIX + srcId + "/";
-        source.setSrcUrl(filePath);
+        String filePath = CommonConstant.UPLOAD_PATH +
+                CommonConstant.IMG_PREFIX + loginUser.getId() + "/" + srcId + "/" + source.getId();
+        //资源访问路径
+        String readPath = CommonConstant.DOWNLOAD_PATH +
+                CommonConstant.IMG_PREFIX + loginUser.getId() + "/" + srcId + "/" + source.getId();
+        source.setSrcUrl(readPath);
         source.setSrcSuffix(type);
+        source.setSrcType(CommonConstant.TYPE_IMG);
         source.setUserId(loginUser.getId());
-
-        File desFile = new File(filePath + source.getId() + "." + type);
+        source.setSrcId(srcId);
+        source.setSrcDown(0);
+        String des_str = filePath + "." + type;
+        File desFile = new File(des_str);
         if (!desFile.getParentFile().exists()) {
             desFile.getParentFile().mkdirs();
         }
-        System.out.println(file.isEmpty());
         try {
             file.transferTo(desFile);
         } catch (IllegalStateException | IOException ex) {

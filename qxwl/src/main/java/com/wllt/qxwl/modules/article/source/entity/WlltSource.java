@@ -3,6 +3,8 @@ package com.wllt.qxwl.modules.article.source.entity;
 import com.wllt.qxwl.comm.base.BaseEntity;
 import lombok.Data;
 
+import java.io.Serializable;
+
 /**
  * (WlltSource)实体类
  *
@@ -10,7 +12,7 @@ import lombok.Data;
  * @since 2020-06-13 16:15:49
  */
 @Data
-public class WlltSource extends BaseEntity {
+public class WlltSource extends BaseEntity implements Serializable {
     /**
     * 资源ID-文章-评论
     */
