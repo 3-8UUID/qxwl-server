@@ -21,7 +21,7 @@
         <java.version>1.8</java.version>
         <dom4j.version>1.5.2</dom4j.version>
         <hutool.version>4.5.16</hutool.version>
-        <jasypt.version>2.1.0</jasypt.version>
+        <jasypt.version>2.1.1</jasypt.version>
         <jjwt.version>0.9.0</jjwt.version>
         <httpclient.version>4.5.5</httpclient.version>
     </properties>
