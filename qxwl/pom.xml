@@ -23,7 +23,7 @@
         <hutool.version>4.5.16</hutool.version>
         <jasypt.version>2.1.1</jasypt.version>
         <jjwt.version>0.9.0</jjwt.version>
-        <httpclient.version>4.5.5</httpclient.version>
+        <httpclient.version>4.5.13</httpclient.version>
     </properties>
 
     <dependencies>
